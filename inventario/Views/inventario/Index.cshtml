@@ -1,0 +1,51 @@
+﻿@model IEnumerable<inventario.Models.registros>
+
+@{
+    ViewBag.Title = "Registros";
+}
+
+<h2>Registros</h2>
+
+<p>
+    @Html.ActionLink("Crear nuevo registro", "Guardar")
+</p>
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        <font color="green">@ViewBag.mensaje</font>
+    </div>
+</div>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TIPO_PRODUCTO)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.NOMBRE)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CANTIDAD)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TIPO_PRODUCTO)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NOMBRE)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CANTIDAD)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Modificar", new { id = item.ID }) |
+                @Html.ActionLink("Ver", "Detalle", new { id = item.ID }) |
+                @Html.ActionLink("Borrar", "Eliminar", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
